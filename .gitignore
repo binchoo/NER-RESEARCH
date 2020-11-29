@@ -118,5 +118,5 @@ media/
 # !**/migrations
 # !**/migrations/__init__.py
 
-*.txt
+# *.txt
 /ai_hackerton
