@@ -68,7 +68,7 @@ class GazetteFeature:
             feature[idx] = 1
         return feature
     
-    def transfrom_charaterized(self, X, ngram):
+    def transform_charaterized(self, X, ngram):
         '''
         음절로 구분된 데이터 셋
         배치를 가젯 특성으로 변환
