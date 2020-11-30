@@ -38,5 +38,5 @@ gazetteer_model_config = copy(base_config)
 gazetteer_model_config['mode'] = 'train'
 gazetteer_model_config['epoch'] = 50
 gazetteer_model_config['features'] = ['feature.gazetteer.GazetteFeature']
-gazetteer_model_config['gazette_feature_length'] = 7
-gazetteer_model_config['ngram'] = 4
+gazetteer_model_config['gazette_feature_length'] = 5
+gazetteer_model_config['ngrams'] = [3, 4, 5, 6, 7]

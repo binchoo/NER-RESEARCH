@@ -61,10 +61,7 @@ class GazetteFeature:
         if word in self.vocab:
             hot = [self.label2idx[nertag] for nertag in self.vocab[word]]
         else:
-            if word == '<SP>':
-                hot = [self.label2idx['<SP>']]
-            else:
-                hot = []
+            hot = []
          
         feature = np.zeros(len(self.label2idx))
         for idx in hot:
@@ -75,7 +72,7 @@ class GazetteFeature:
         '''
         음절로 구분된 데이터 셋
         배치를 가젯 특성으로 변환
-        입력: (배치, 시퀀스 최대 길이)
+        입력: (배치, 시퀀스)
         출력: (배치, 시퀀스 최대 길이, 가젯 레이블 수)
         '''
         constant_length = len(X[0])
@@ -85,7 +82,7 @@ class GazetteFeature:
             feature[i] = self.transfrom_charaterized_line(seq, ngram)
         return feature
     
-    def transfrom_charaterized_line(self, line, ngram):
+    def transform_charaterized_line(self, line, ngram):
         '''
         음절로 구분된 데이터 셋
         문장을 가젯 특성으로 변환
@@ -113,5 +110,20 @@ class GazetteFeature:
             sentence += ['<UNK>'] * (max_length - len(sentence))
         else:
             sentence = sentence[:max_length]
-        feature = self.transfrom_charaterized_line(sentence, ngram)
+        feature = self.transform_charaterized_line(sentence, ngram)
         return feature
+    
+    def transform_end2end_complex_ngrams(self, line, max_length, ngrams):
+        '''
+        음절로 띄어쓰기 된 End2End 데이터 셋
+        문장을 가젯 특성으로 변환
+        입력: 음절로 띄어쓰기 된 문장 스트링
+        출력: (시퀀스 최대 길이, 가젯 레이블 수)
+        '''
+        feature = self.transform_end2end(line, max_length, ngrams[0])
+        for i, ngram in enumerate(ngrams):
+            if 0 != i:
+                feature = np.hstack((feature, self.transform_end2end(line, max_length, ngram)))
+        return feature
+    
+  

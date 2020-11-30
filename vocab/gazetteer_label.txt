@@ -1,7 +1,5 @@
-<SP>
 DT
 LC
 OG
 PS
 TI
-O
