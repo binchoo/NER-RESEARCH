@@ -27,6 +27,8 @@ class GazetteFeature:
     
     def transform(self, X):
         '''
+        단어로 구분된 데이터 셋
+        배치를 가젯 특성으로 변환
         입력: (배치, 시퀀스 최대 길이)
         출력: (배치, 시퀀스 최대 길이, 가젯 레이블 수)
         '''
@@ -39,6 +41,8 @@ class GazetteFeature:
     
     def transform_line(self, line):
         '''
+        단어로 구분된 데이터 셋
+        문장을 가젯 특성으로 변환
         입력: (시퀀스 최대 길이)
         출력: (시퀀스 최대 길이, 가젯 레이블 수)
         '''
@@ -49,7 +53,9 @@ class GazetteFeature:
                 
     def transform_word(self, word):
         '''
-        입력: 자연어 단어
+        단어로 구분된 데이터 셋
+        단어를 가젯 특성으로 변환
+        입력: 자연어 단어 하나
         출력: (가젯 레이블 수,)
         '''
         if word in self.vocab:
@@ -64,6 +70,8 @@ class GazetteFeature:
     
     def transfrom_charaterized(self, X, ngram):
         '''
+        음절로 구분된 데이터 셋
+        배치를 가젯 특성으로 변환
         입력: (배치, 시퀀스 최대 길이)
         출력: (배치, 시퀀스 최대 길이, 가젯 레이블 수)
         '''
@@ -76,7 +84,9 @@ class GazetteFeature:
     
     def transfrom_charaterized_line(self, line, ngram):
         '''
-        입력: 자소로 구분된 시퀀스, (시퀀스 최대 길이)
+        음절로 구분된 데이터 셋
+        문장을 가젯 특성으로 변환
+        입력: (시퀀스 최대 길이)
         출력: (시퀀스 최대 길이, 가젯 레이블 수)
         '''
         line_length = len(line)
@@ -88,3 +98,17 @@ class GazetteFeature:
                 feature[charpos+attach] += ngram_word_feature
         return feature
                     
+    def transform_end2end(self, line, max_length, ngram=4):
+        '''
+        음절로 띄어쓰기 된 End2End 데이터 셋
+        문장을 가젯 특성으로 변환
+        입력: 음절로 띄어쓰기 된 문장 스트링
+        출력: (시퀀스 최대 길이, 가젯 레이블 수)
+        '''
+        sentence = line.split()
+        if len(sentence) <= max_length:
+            sentence += ['<UNK>'] * (max_length - len(sentence))
+        else:
+            sentence = sentence[:max_length]
+        feature = self.transfrom_charaterized_line(sentence, ngram)
+        return feature
