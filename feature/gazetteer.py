@@ -61,7 +61,10 @@ class GazetteFeature:
         if word in self.vocab:
             hot = [self.label2idx[nertag] for nertag in self.vocab[word]]
         else:
-            hot = [self.label2idx['O']]
+            if word == '<SP>':
+                hot = [self.label2idx['<SP>']]
+            else:
+                hot = []
          
         feature = np.zeros(len(self.label2idx))
         for idx in hot:
