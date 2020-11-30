@@ -79,7 +79,7 @@ class GazetteFeature:
         feature = np.empty((len(X), constant_length, len(self.label2idx)))
         for i, seq in enumerate(X):
             assert(constant_length == len(seq))
-            feature[i] = self.transfrom_charaterized_line(seq, ngram)
+            feature[i] = self.transform_charaterized_line(seq, ngram)
         return feature
     
     def transform_charaterized_line(self, line, ngram):
