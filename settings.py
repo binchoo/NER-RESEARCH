@@ -38,10 +38,10 @@ GAZETTEER_LABEL = 'vocab/gazetteer_label.txt'
 
 gazetteer_model_config = copy(base_config)
 gazetteer_model_config['mode'] = 'train'
-gazetteer_model_config['epoch'] = 50
+gazetteer_model_config['epoch'] = 30
 gazetteer_model_config['features'] = ['feature.gazetteer.GazetteFeature']
 gazetteer_model_config['gazette_feature_length'] = 5
-gazetteer_model_config['ngrams'] = [3, 4, 5, 6, 7]
+gazetteer_model_config['ngrams'] = [3, 4, 5, 6, 7, 8, 9, 10]
 
 ######                               ######
 # Configurations of POS Tag Feature Model#
@@ -50,7 +50,7 @@ POS_LABEL = 'vocab/pos_label.txt'
 
 postag_model_config = copy(base_config)
 postag_model_config['mode'] = 'train'
-postag_model_config['epoch'] = 50
+postag_model_config['epoch'] = 30
 postag_model_config['features'] = ['feature.postag.PosTagFeature']
 postag_model_config['postag_feature_length'] = 44
 postag_model_config['tagger'] = 'konlpy.tag.Mecab'

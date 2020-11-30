@@ -1,4 +1,5 @@
 .ipynb_checkpoints/
+output/
 led / optimized / DLL files
 *.cert
 *.skl
