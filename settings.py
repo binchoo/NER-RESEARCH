@@ -19,9 +19,9 @@ base_config = {
   "output_dir_path":OUTPUT_DIR,
   "word_vocab_size":2160,
   "number_of_tags": 14,
-  "hidden_size": 100,
+  "hidden_size": 200,
   "dropout":0.2,
-  "embedding_size":100,
+  "embedding_size":200,
   "max_length": 150,
   "batch_size":64,
   "epoch":20,
@@ -54,3 +54,15 @@ postag_model_config['epoch'] = 30
 postag_model_config['features'] = ['feature.postag.PosTagFeature']
 postag_model_config['postag_feature_length'] = 44
 postag_model_config['tagger'] = 'konlpy.tag.Mecab'
+
+######                               ######
+# Configurations of Gazetteer & Pos Tag Feature Model#
+######                             ######
+gazettpos_model_config = copy(base_config)
+gazettpos_model_config['mode'] = 'train'
+gazettpos_model_config['epoch'] = 200
+gazettpos_model_config['features'] = ['feature.gazetteer.GazetteFeature', 'feature.postag.PosTagFeature']
+gazettpos_model_config['gazette_feature_length'] = 5
+gazettpos_model_config['ngrams'] = [3, 4, 5, 6, 7, 8, 9, 10]
+gazettpos_model_config['postag_feature_length'] = 44
+gazettpos_model_config['tagger'] = 'konlpy.tag.Mecab'
