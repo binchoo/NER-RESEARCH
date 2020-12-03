@@ -14,7 +14,7 @@ class PosTagFeature:
             label2idx = {nertag.strip():idx for idx, nertag in enumerate(f.readlines())}
         return label2idx
                     
-    def transform_end2end(self, line, max_length):
+    def transform_end2end(self, line, max_length, hot_label=True):
         '''
         음절로 띄어쓰기 된 End2End 데이터 셋
         문장을 가젯 특성으로 변환
@@ -27,11 +27,17 @@ class PosTagFeature:
             pos_index = self.label2idx.get(pos, self.label2idx['UNK'])
             for char in word:
                 hot.append(pos_index)
-                
+        
         if len(hot) > max_length:
             hot = hot[:max_length]
-            
-        feature = np.zeros((max_length, len(self.label2idx)))
-        feature[np.arange(max_length)[:len(hot)], hot] = 1
         
+        if hot_label:
+            feature = np.zeros((max_length, len(self.label2idx)))
+            feature[np.arange(max_length)[:len(hot)], hot] = 1
+            return feature
+        else:
+            feature = np.zeros(max_length)
+            feature[: len(hot)] = np.array(hot)
         return feature
+        
+        
