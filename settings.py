@@ -55,9 +55,9 @@ postag_model_config['features'] = ['feature.postag.PosTagFeature']
 postag_model_config['postag_feature_length'] = 44
 postag_model_config['tagger'] = 'konlpy.tag.Mecab'
 
-######                               ######
+######                                           ######
 # Configurations of Gazetteer & Pos Tag Feature Model#
-######                             ######
+######                                         ######
 gazettpos_model_config = copy(base_config)
 gazettpos_model_config['mode'] = 'train'
 gazettpos_model_config['epoch'] = 200
@@ -66,3 +66,9 @@ gazettpos_model_config['gazette_feature_length'] = 5
 gazettpos_model_config['ngrams'] = [3, 4, 5, 6, 7, 8, 9, 10]
 gazettpos_model_config['postag_feature_length'] = 44
 gazettpos_model_config['tagger'] = 'konlpy.tag.Mecab'
+
+######                                           ######
+# Configurations of Gazetteer & Pos Tag Feature Model#
+######                                         ######
+gazettcnn_model_config = copy(gazetteer_model_config)
+gazettcnn_model_config['num_filters'] = 16
