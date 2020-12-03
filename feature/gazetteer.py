@@ -1,4 +1,6 @@
-from settings import GAZETTEER_VOCAB, GAZETTEER_LABEL
+from settings import (
+    GAZETTEER_VOCAB, GAZETTEER_LABEL
+)
 import numpy as np
 
 class GazetteFeature:
@@ -9,19 +11,19 @@ class GazetteFeature:
     
     def load_label(self, label_file):
         with open(label_file, 'r', encoding='utf8') as f:
-            label2idx = {nertag.strip():idx for idx, nertag in enumerate(f.readlines())}
+            label2idx = {tag.strip():idx for idx, tag in enumerate(f.readlines())}
         return label2idx
     
     def load_vocab(self, vocab_file):
         vocab = {}
         with open(vocab_file, 'r', encoding='utf8') as f:
-            for korword, nertag in [line.split('\t') for line in f.readlines()]:
+            for korword, tag in [line.split('\t') for line in f.readlines()]:
                 korword = korword.strip()
-                nertags = nertag.strip().split(',')
+                tags = tag.strip().split(',')
                 
                 tagset = vocab.get(korword, set())
-                for nertag in nertags:
-                    tagset.add(nertag)
+                for tag in tags:
+                    tagset.add(tag)
                 vocab[korword] = tagset
         return vocab
     

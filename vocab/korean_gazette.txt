@@ -1,4 +1,4 @@
-﻿ac밀란	OG
+ac밀란	OG
 정성균	PS
 돈내코코스	LC
 00월초까지	DT
@@ -2865,7 +2865,7 @@ lpga	OG
 안산시	LC
 교대	OG
 주문진중	OG
-李玖	PS
+李玖	PS
 지난0년간	DT
 강주	PS
 ktcs	OG
@@ -3080,7 +3080,7 @@ isu	OG
 황경신	PS
 릴리	OG
 버버리	OG
-盧武鉉	PS
+盧武鉉	PS
 칭화대	OG
 부산교육청	OG
 홍	PS
@@ -4145,7 +4145,7 @@ ioc	OG
 삼성화재v10	OG
 오서산	LC
 최형우	PS
-李源	PS
+李源	PS
 송천권	PS
 발리바	PS
 sbs에이스	OG
@@ -4443,7 +4443,7 @@ nhk	OG
 강원대학교	OG
 디트로이트	OG
 橫田	PS
-李垠	PS
+李垠	PS
 노모	PS
 김해외고	OG
 지역농협	OG
@@ -8034,7 +8034,7 @@ ze:a	PS
 朴京沃	PS
 東아시아	LC
 柳重敎	PS
-柳麟錫	PS
+柳麟錫	PS
 橫田	PS
 權溥	PS
 武漢 대학	OG
@@ -17034,7 +17034,7 @@ ze:a	PS
 한국 청소년대표팀	OG
 한국 태권도	OG
 한국 태권도 대표팀	OG
-한국 女배구	OG
+한국 女배구	OG
 한국가스공사	OG
 한국가정법률상담소	OG
 한국감정원	OG
@@ -17650,15 +17650,15 @@ ze:a	PS
 히틀러	PS
 히팅머신	PS
 힐러리 클린턴	PS
-金山寺	LC
-金文烈	PS
-羅雄培	PS
-盧武鉉	PS
-盧泰愚	PS
-李彦迪	PS
-李恒老	PS
-李珥	PS
-李穡	PS
-李震相	PS
-李鴻永	PS
-李齊賢	PS
+金山寺	LC
+金文烈	PS
+羅雄培	PS
+盧武鉉	PS
+盧泰愚	PS
+李彦迪	PS
+李恒老	PS
+李珥	PS
+李穡	PS
+李震相	PS
+李鴻永	PS
+李齊賢	PS

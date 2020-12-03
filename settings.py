@@ -8,6 +8,9 @@ DEV_FILE = 'ner_dev.txt'
 WORD_VOCAB_FILE = "vocab/word_vocab.txt"
 TAG_VOCAB_FILE = "vocab/tag_vocab.txt"
 
+
+from copy import copy
+
 base_config = {
   "mode": "train",
   "root_dir": ROOT_DIR,
@@ -26,13 +29,10 @@ base_config = {
   "batch_size":64,
   "epoch":20,
   "features": None,
+  "lr": 0.0003
 }
 
-from copy import copy
-
-######                                 ######
 # Configurations of Gazetteer Feature Model#
-######                               ######
 GAZETTEER_VOCAB = 'vocab/korean_gazette.txt'
 GAZETTEER_LABEL = 'vocab/gazetteer_label.txt'
 
@@ -43,9 +43,11 @@ gazetteer_model_config['features'] = ['feature.gazetteer.GazetteFeature']
 gazetteer_model_config['gazette_feature_length'] = 7
 gazetteer_model_config['ngrams'] = [3, 4, 5, 6, 7, 8, 9, 10]
 
-######                               ######
+# Configurations of Gazetteer & Pos Tag Feature Model#
+gazettcnn_model_config = copy(gazetteer_model_config)
+gazettcnn_model_config['num_filters'] = 16
+
 # Configurations of POS Tag Feature Model#
-######                             ######
 POS_LABEL = 'vocab/pos_label.txt'
 
 postag_model_config = copy(base_config)
@@ -54,21 +56,3 @@ postag_model_config['epoch'] = 30
 postag_model_config['features'] = ['feature.postag.PosTagFeature']
 postag_model_config['postag_feature_length'] = 44
 postag_model_config['tagger'] = 'konlpy.tag.Mecab'
-
-######                                           ######
-# Configurations of Gazetteer & Pos Tag Feature Model#
-######                                         ######
-gazettpos_model_config = copy(base_config)
-gazettpos_model_config['mode'] = 'train'
-gazettpos_model_config['epoch'] = 200
-gazettpos_model_config['features'] = ['feature.gazetteer.GazetteFeature', 'feature.postag.PosTagFeature']
-gazettpos_model_config['gazette_feature_length'] = 7
-gazettpos_model_config['ngrams'] = [3, 4, 5, 6, 7, 8, 9, 10]
-gazettpos_model_config['postag_feature_length'] = 44
-gazettpos_model_config['tagger'] = 'konlpy.tag.Mecab'
-
-######                                           ######
-# Configurations of Gazetteer & Pos Tag Feature Model#
-######                                         ######
-gazettcnn_model_config = copy(gazetteer_model_config)
-gazettcnn_model_config['num_filters'] = 16
